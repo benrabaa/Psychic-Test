@@ -4,12 +4,10 @@ package org.pursuit.app_hw_benrabaa_mohamed;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -22,7 +20,7 @@ import java.util.Random;
 public class FirstFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_SELECTED_CAEGORY = "selectedCategory";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -33,7 +31,12 @@ public class FirstFragment extends Fragment {
     private  ImageView imageView3;
     private  ImageView imageView4;
     private FragmentInterface fragmentInterface;
-    private int[] myImageList=new int[]{R.drawable.dog1,R.drawable.dog2,R.drawable.dog3,R.drawable.dog4};
+    private int[] myDogImageList =new int[]{R.drawable.dog1,R.drawable.dog2,R.drawable.dog3,R.drawable.dog4};
+    private int[] myCardImageList =new int[]{R.drawable.card1,R.drawable.card2,R.drawable.card3,R.drawable.card4};
+    private int[] myWhaleImageList =new int[]{R.drawable.whale1,R.drawable.whale2,R.drawable.whale3,R.drawable.whale4};
+    public int[] imageholderList;
+
+
 
 
     public FirstFragment() {
@@ -48,10 +51,10 @@ public class FirstFragment extends Fragment {
      * @return A new instance of fragment FirstFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FirstFragment newInstance() {
+    public static FirstFragment newInstance(String selectedCategory) {
         FirstFragment fragment = new FirstFragment();
         Bundle args = new Bundle();
-
+        args.putString(ARG_SELECTED_CAEGORY,selectedCategory);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,8 +70,7 @@ public class FirstFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(ARG_SELECTED_CAEGORY);
         }
     }
 
@@ -82,36 +84,56 @@ public class FirstFragment extends Fragment {
         imageView3=view.findViewById(R.id.image3_image_view);
         imageView4=view.findViewById(R.id.image4_image_view);
 
-        imageView1.setImageResource(myImageList[0]);
-        imageView2.setImageResource(myImageList[1]);
-        imageView3.setImageResource(myImageList[2]);
-        imageView4.setImageResource(myImageList[3]);
 
+        switch (mParam1){
+            case "Dogs":
+                imageView1.setImageResource(myDogImageList[0]);
+                imageView2.setImageResource(myDogImageList[1]);
+                imageView3.setImageResource(myDogImageList[2]);
+                imageView4.setImageResource(myDogImageList[3]);
+                imageholderList=myDogImageList;
+                break;
+            case "Whales":
+                imageView1.setImageResource(myWhaleImageList[0]);
+                imageView2.setImageResource(myWhaleImageList[1]);
+                imageView3.setImageResource(myWhaleImageList[2]);
+                imageView4.setImageResource(myWhaleImageList[3]);
+                imageholderList=myWhaleImageList;
 
+                break;
+            case "Cards":
+                imageView1.setImageResource(myCardImageList[0]);
+                imageView2.setImageResource(myCardImageList[1]);
+                imageView3.setImageResource(myCardImageList[2]);
+                imageView4.setImageResource(myCardImageList[3]);
+                imageholderList=myCardImageList;
+
+                break;
+        }
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                fragmentInterface.showResultFragment(myImageList[0],randomImage(myImageList));
+                fragmentInterface.showResultFragment(imageholderList[0],randomImage(imageholderList));
             }
         });
 
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentInterface.showResultFragment(myImageList[1],randomImage(myImageList));
+                fragmentInterface.showResultFragment(imageholderList[1],randomImage(imageholderList));
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentInterface.showResultFragment(myImageList[2],randomImage(myImageList));
+                fragmentInterface.showResultFragment(imageholderList[2],randomImage(imageholderList));
             }
         });
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentInterface.showResultFragment(myImageList[3],randomImage(myImageList));
+                fragmentInterface.showResultFragment(imageholderList[3],randomImage(imageholderList));
             }
         });
 

@@ -74,7 +74,33 @@ public class ResultDataBaseHelper extends SQLiteOpenHelper {
         }
         return totalCountCursor.getCount();
     }
+
     public void deleteAllRecords(){
         getWritableDatabase().execSQL("DELETE FROM "+ TABLE_NAME+";");
+    }
+
+    public double getLastpercentage(){
+
+        Cursor percentageCursor = getReadableDatabase().rawQuery(
+ //               "SELECT percentage FROM " + TABLE_NAME +" ;", null);
+//
+               " SELECT percentage FROM " + TABLE_NAME + " WHERE _id = ( SELECT MAX(_id) from " + TABLE_NAME + ");",null);
+             //   "SELECT * FROM " + TABLE_NAME +" ;", null);
+        //"SELECT MAX(_id) from " + TABLE_NAME + ";",null);
+
+        if(percentageCursor!=null) {
+           // if(totalCountCursor) {
+                //deleteAllRecords();
+            //if(percentageCursor.()) {
+            percentageCursor.moveToFirst();
+                return percentageCursor.getDouble(percentageCursor.getColumnIndex("percentage"));
+               // return  percentageCursor.getInt(percentageCursor.getColumnIndex("_id"));
+
+               // return percentageCursor.getDouble(percentageCursor.getColumnIndex("_id"));
+                //return percentageCursor.getCount();
+            }
+           // }
+       // }
+        return 99.99;
     }
 }

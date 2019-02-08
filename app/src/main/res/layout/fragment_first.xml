@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".FirstFragment">
 
-     TODO: Update blank fragment layout
+    TODO: Update blank fragment layout
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="392dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        android:textColor="@android:color/holo_red_light"
+        android:textStyle="bold"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="48dp"
         android:gravity="center"
         android:text="Please click on the image that you think is match the computer choise"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/image2_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,22 +30,21 @@
     <ImageView
         android:id="@+id/image2_image_view"
         android:layout_width="0dp"
-        android:layout_height="272dp"
-        android:layout_marginTop="108dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="37dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/image1_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image3_image_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
         android:id="@+id/image1_image_view"
         android:layout_width="0dp"
-        android:layout_height="267dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="28dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,29 +54,30 @@
     <ImageView
         android:id="@+id/image3_image_view"
         android:layout_width="0dp"
-        android:layout_height="264dp"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="3dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/image4_image_view"
+        app:layout_constraintBottom_toBottomOf="@+id/image2_image_view"
         app:layout_constraintEnd_toStartOf="@+id/image2_image_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/image2_image_view" />
 
     <ImageView
         android:id="@+id/image4_image_view"
         android:layout_width="0dp"
-        android:layout_height="260dp"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="2dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/image1_image_view"
         app:layout_constraintEnd_toStartOf="@+id/image1_image_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image3_image_view" />
+        app:layout_constraintTop_toTopOf="@+id/image1_image_view" />
 
 
 </android.support.constraint.ConstraintLayout>
